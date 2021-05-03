@@ -7,6 +7,13 @@ import Quotes from './Components/Quotes.json'
 function App() {
   let [sentence, Setsentence] = useState(0);
 
+  
+  var url = window.location.href;
+  var superUrl = "https://twitter.com/intent/tweet?url=" + url + "&text=" + encodeURIComponent(Quotes.quotes[sentence].quote) + encodeURIComponent(Quotes.quotes[sentence].author);
+
+
+
+
   const ramdomPhrase = () => {
     sentence = Math.floor(Math.random()*102)
     Setsentence(sentence);
@@ -21,7 +28,7 @@ function App() {
       <h3>{Quotes.quotes[sentence].author}</h3>
       
       <div className = 'buttons'>
-        <button>Twitter</button>
+        <button><a href={superUrl}>Twitter</a></button>
         <button type="button" onClick= {ramdomPhrase} >Next</button>
       </div>
     </div>
